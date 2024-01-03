@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Search</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Include Font Awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        header {
+            background-color: #03385b;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            width: 100%
+        }
+
+        .login-button,
+        .btn {
+            background-color: #ef9b0f;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn {
+            background-color: #ef9b0f;
+        }
+
+        .login-button:hover,
+        .btn:hover {
+            background-color: #ef9b0f;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .contact-info p {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eff3f6;
+            padding: 10px;
+        }
+
+        .logo-container a {
+            margin: 0 5px;
+            color: #060606;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        .logo-container a:hover {
+            background-color: #f4f8fb;
+        }
+
+        .content-wrapper {
+            /* Add some spacing between the image and the about us content */
+            margin-top: 20px;
+        }
+
+        .image-container {
+            /* New styles to make the image container 100% width */
+            background-color: white;
+
+            height: 500px;
+            width: 100%;
+            /* Adjust the max-width as per your requirement */
+            margin: 0 auto;
+            /* Center the container horizontally */
+            padding: 40px;
+        }
+
+
+        .images-container {
+            background-color: #314c5e;
+            color: white;
+            width: 800px;
+            height: 400px;
+            /* Adjust the max-width as per your requirement */
+            margin: 0 auto;
+            /* Center the container horizontally */
+            padding: 40px 80px;
+            /* Add some padding around the container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .images-container img {
+            width: 80%;
+        }
+
+        /* Custom styling for the Next button */
+        .next-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #021c2e;
+            color: #fbf8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .prev-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #021c2e;
+            color: #fbf8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .next-container:hover {
+            opacity: 1;
+        }
+
+        .prev-container:hover {
+            opacity: 1;
+        }
+
+
+        .next-container .carousel-control-next-icon {
+            background-size: 100%;
+            font-size: 40px;
+            /* Set the background image size to make the icon larger */
+        }
+
+        .prev-container .carousel-control-prev-icon {
+            background-size: 100%;
+            /* Set the background image size to make the icon larger */
+        }
+
+        .next-container {
+            right: 240px;
+            /* Adjust the right value to move the Next button closer to the image */
+        }
+
+        .prev-container {
+            left: 240px;
+            /* Adjust the right value to move the Next button closer to the image */
+        }
+
+        .Welcome-container {
+            color: #03385b;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .container h2 {
+            color: #03385b;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .container h4 {
+            color: #03385b;
+        }
+
+        .container h1 {
+            color: #03385b;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .yellow-box {
+            background-color: #ef9b0f;
+            padding: 5px 10px;
+            margin: 20px;
+            color: white;
+        }
+
+        .services-container h4 {
+            font-size: 15px;
+            align-items: center;
+        }
+
+        .container1 {
+            background-color: #03385b;
+
+            padding: 50px 0;
+        }
+
+        .container1 h2 {
+            color: #ef9b0f;
+        }
+
+
+        .fact-box {
+            background-color: #03385b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid #000;
+            /* Add black border */
+            width: 8rem;
+            /* Set width to 2rem */
+            height: 8rem;
+            /* Set height to 2rem */
+
+        }
+
+
+        .fact-box .fact-number {
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .fact-box .fact-label {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .container2 h2 {
+            color: #03385b;
+        }
+
+        .container2 h1 {
+            color: #ef9b0f;
+            font-size: 25px;
+
+        }
+
+        .container1 .fact-label {
+            color: #ef9b0f;
+        }
+
+        .footer {
+            background-color: #333;
+            /* Change the background color to your preference */
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: #ef9b0f;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-link {
+            /* Change the color to your desired color */
+            text-decoration: none;
+            color: #ef9b0f;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 6362502705</p>
+                        <p><i class="fas fa-envelope"></i> info@clicktosearch.com</p>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <button class="login-button">Login</button>
+                    <button class="btn btn-warning ms-4">Become a Partner</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Logo and Links in Same Line -->
+    <div class="logo-container">
+        <a class="navbar-brand" href="#">
+            <img src="http://www.clicktosearch.in/CTSWebImages/CTSMysLogo.jpg" alt="LOGO">
+        </a>
+        <a href="#">Home</a>
+
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" id="productsDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">Products</a>
+            <div class="dropdown-menu" aria-labelledby="productsDropdown">
+                <a class="dropdown-item" href="#">school management software</a>
+                <a class="dropdown-item" href="#">billing software</a>
+                <a class="dropdown-item" href="#">hotel management software</a>
+                <a class="dropdown-item" href="#">restaurant management software</a>
+            </div>
+        </div>
+
+        <a href="#">BPO Services</a>
+        <!-- Assuming "gh" is the FontAwesome icon for email -->
+        <a href="#"> Contact</a>
+        <!-- Assuming "phone" is the FontAwesome icon for call -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    </div>
+    <div class="content-wrapper">
+        <div class="image-container">
+            <!-- Carousel -->
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div class="images-container">
+                    <div class="carousel-inner">
+                        <div class="content-container">
+                            <div class="carousel-item active">
+                                <img src="web.jpg" alt="Los Angeles" class="d-block" style="width:60%">
+                                <h1>WEBSITE DEVELOPMENT</h1>
+                                <p>Our Web development team has an extensive experience of developing rich web
+                                    applications
+                                    and with different backgrounds. And diversity has given us confidence to deliver
+                                    best
+                                    web solutions to our client regardless of any complexity.</p>
+                            </div>
+                        </div>
+                        <div class="content1-container">
+                            <div class="carousel-item">
+                                <img src="software.jpg" alt="Chicago" class="d-block" style="width:60%">
+                                <h1>SOFTWARE DEVELOPMENT</h1>
+                                <p>We provide custom-built application as per the customer requirement. Our
+                                    comprehensive
+                                    delivery options enable us to distribute work across global locations to align with
+                                    client's cost, speed, and risk requirements.</p>
+                            </div>
+                        </div>
+                        <div class="content2-container"></div>
+                        <div class="carousel-item">
+                            <img src="digital.jpg" alt="New York" class="d-block" style="width:60%">
+                            <h1>DIGITAL MARKETING</h1>
+                            <p>We specialise in short-term strategic reviews making recommendations to improve overall
+                                digital marketing or Ecommerce effectiveness. Alternatively our consultants advise on
+                                specific marketing channels.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <!-- Left and right controls/icons -->
+                    <div class="prev-container">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                    </div>
+                    <div class="next-container">
+                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="Welcome-container">
+        <h1 class="text-center">Welcome To Click To Search</h1>
+        <div class="text-center justify-content-center">
+        </div>
+    </section><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h2><strong>ABOUT US</strong></h2>
+                <p>CLICK TO SEARCH is a leading Software Development, Web Designing, Web Hosting, Email, Bulk SMS
+                    Marketing and DigiLED Company in Mysore. <br>
+
+                    CLICK TO SEARCH is started by team of young professional who are having tremendous experience in the
+                    field of IT industry. We provide cost effective and optimized solutions to our customers, which in
+                    turn it brings more profit to them. <br>
+
+                    CLICK TO SEARCH is a leading service-oriented organisation catering to the needs of people through
+                    internet, mobile and Event management. Click To Search has extended its services in Events
+                    Management, so that now our clients dont have to think for there event much. If you are thinking
+                    about an event then think of Click To Search and we do it everything for you. <br></p>
+            </div><br>
+            <div class="col-md-4">
+                <h2><strong>OUR SERVICES</strong></h2>
+                <p class="yellow-box">Website Development</p>
+                <p class="yellow-box">Software Development</p>
+                <p class="yellow-box">Event Management</p>
+                <p class="yellow-box">Bulk SMS</p>
+                <p class="yellow-box">Digital Marketing</p>
+            </div><br>
+            <div class="container">
+                <div class="row">
+                    <h2 class="text-center">Our Products</h2><br><br>
+                    <div class="text-center justify-content-center">
+                        <p>We build world class E-Commerce Web Portals, Mobile Applications, Web Applications,
+                            Enterprise Solutions, Digital Marketing and Analytics Campaigns.NAME IT AND WE DO IT. In
+                            short, WE HELP COMPANIES SUCCEED THROUGH TECHNOLOGY.</p>
+                    </div><br>
+                    <div class="col-md-3 text-center">
+                        <img src="http://www.clicktosearch.in/Products/ProductSchoolsof.jpg" alt="">
+                        <h4>ALFA</h4>
+                        <p>ALFA is a unique and very comprehensive software for management of academic institutions with
+                            various module Like Academic, Fees, Examination, Library and HR & Payroll etc.</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img src="http://www.clicktosearch.in/Products/PrdtGST.jpg" alt="">
+                        <h4>INSTA</h4>
+                        <p>INSTA is simple, efficient, online GST Billing Software. INSTA is a complete solution to
+                            manage your Business. It generates various reports like sales, item stock, customer details
+                            and many more.</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img src="http://www.clicktosearch.in/Products/DigiLed.png" alt="">
+                        <h4>Lodging Software</h4>
+                        <p>Our Hotel Management System is successfully running in many hotel industries. It gives you an
+                            ease to work with it very smoothly. It has user friendly features like informative and eye
+                            catchy dashboard where in you can get all the information on the finger tip</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img src="http://www.clicktosearch.in/Products/restaurantSoft.png" alt="">
+                        <h4>Restaurant Software</h4>
+                        <p>Restaurant software generates reports on different aspects of restaurant management including
+                            sales, item stock, daily operations and management and much more.</p>
+                    </div>
+                </div>
+            </div><br>
+        </div><br>
+        <section class="services-container">
+            <h1 class="text-center">Services</h1><br>
+            <div class="text-center justify-content-center">
+                <p> we provide best IT Solutions to all industry which needs IT Support. We do consultancy, Development
+                    & Outsourcing</p>
+            </div><br>
+            <div class="row">
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/WebIcon.png" alt="Dynamic Website">
+                    </div>
+                    <h4>Dynamic Website</h4>
+                </div>
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/softwareIcon.png" alt="Software Development">
+                    </div>
+                    <h4>Software Development</h4>
+                </div>
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/digitalicon.png" alt="Digital Marketing">
+                    </div>
+                    <h4>Digital Marketing</h4>
+                </div>
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/IconEvent.png" alt="Event Management">
+                    </div>
+                    <h4>Event Management</h4>
+                </div>
+            </div>
+
+            <div class="row" style="height: 70px;"></div>
+
+            <div class="row">
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/outdoricon.jpg" alt="Outdoor Marketing">
+                    </div>
+                    <h4>Outdoor Marketing</h4>
+                </div>
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/IconSocialMedia.png" alt="Social Media Marketing">
+                    </div>
+                    <h4>Social Media Marketing</h4>
+                </div>
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/SoftSkillIcon.png" alt="Soft Skills Training">
+                    </div>
+                    <h4>Soft Skills Training</h4>
+                </div>
+                <div class="col-md-3 service-box">
+                    <div class="service-image">
+                        <img src="http://www.clicktosearch.in/Icons/CCTVIcon.png" alt="CCTV Sales & Services">
+                    </div>
+                    <h4>CCTV Sales & Services</h4>
+                </div>
+            </div>
+        </section><br><br>
+        <section>
+            <div class="container1">
+                <h2 class="text-center"><strong>Some Facts About Us</strong></h2>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="fact-box">
+                            <span class="fact-number">10</span>
+                            <small class="fact-label">Years of Experience</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="fact-box">
+                            <span class="fact-number">300+</span>
+                            <small class="fact-label">Completed Projects</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="fact-box">
+                            <span class="fact-number">300+</span>
+                            <small class="fact-label">Happy Customers</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="fact-box">
+                            <span class="fact-number">2500</span>
+                            <small class="fact-label">Likes</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><br><br>
+        <div class="container2">
+            <h2 class="text-center">Our Work Process</h2><br><br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>Click To Search</h1>
+                    <p>Click To Search is capable of providing high quality; cost-effective; mission-critical
+                        websites.At this knowledge age, knowledge is the key for creativity & quality to retain in
+                        competitive market.</p>
+                </div>
+                <div class="col-md-8">
+                    <h1>CLICK TO SEARCH</h1>
+                    <p>It is true “first impression is last impression”. We always keep this statement in our mind
+                        during designing. It is our mission to give a wow factor to your website. We do a deep study
+                        ofyour business before creating any design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer class="bg-dark text-white footer">
+        <div class="container3"><br>
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>SERVICES</h3>
+                    <ul>
+                        <li>Software Development</li>
+                        <li>Mobile App Development</li>
+                        <li>Website Development</li>
+                        <li>Billing Software</li>
+                        <li>Bulk SMS</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>DIGITAL MARKETING</h3>
+                    <ul>
+                        <li>Whatsapp Marketing</li>
+                        <li>Facebook Marketing</li>
+                        <li>Social Media Marketing (SMM)</li>
+                        <li>Google Adwords</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>ADDRESS</h3>
+                    <p>05, RS Naidunagar Main Road Near Pushpa Ashrama,Ring Road Mysore-570007</p>
+                    <p>info@clicktosearch.in</p>
+                    <p>+91 6361502705</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-10 text-md-end">
+                <a href="#" class="footer-link" style="color: #ef9b0f;">Terms and Conditions</a>
+                <a href="#" class="footer-link ms-3" style="color: #ef9b0f;">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
